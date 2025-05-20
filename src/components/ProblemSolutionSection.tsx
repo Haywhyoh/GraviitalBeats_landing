@@ -79,7 +79,7 @@ const ProblemSolutionSection: React.FC = () => {
             className="text-lg text-gray-300 mb-12 text-center animate-fade-in"
             style={{ animationDelay: "0.4s" }}
           >
-            Current beat marketplaces are bloated, messy, and offer restrictive payment methods. GraviitalBeats is built from the ground up to empower <span className="text-graviital-blue-light font-semibold">producers</span> and give <span className="text-graviital-purple-light font-semibold">buyers</span> what they actually need:
+            Current beat marketplaces are bloated, messy, and offer restrictive payment methods. GraviitalBeats is built to empower <span className="text-graviital-blue-light font-semibold">producers</span> and give <span className="text-graviital-purple-light font-semibold">buyers</span> what they actually need:
           </p>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -93,7 +93,7 @@ const ProblemSolutionSection: React.FC = () => {
             />
             
             <FeatureCard
-              icon={Check}
+              icon={CreditCard}
               iconColor="text-graviital-blue-light"
               iconBgColor="bg-graviital-blue/20"
               title="Transparent pricing"

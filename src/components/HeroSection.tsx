@@ -20,7 +20,7 @@ const HeroSection: React.FC = () => {
       </div>
 
       {/* Background Elements */}
-      <div 
+      {/* <div 
         className="absolute inset-0 overflow-hidden z-1"
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
@@ -42,7 +42,7 @@ const HeroSection: React.FC = () => {
             transition: 'transform 1.2s ease-in-out'
           }}
         ></div>
-      </div>
+      </div> */}
 
       <div className="container mx-auto relative z-10 px-4">
         <div className="max-w-6xl mx-auto text-center">

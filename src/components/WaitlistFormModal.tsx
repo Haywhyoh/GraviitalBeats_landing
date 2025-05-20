@@ -63,7 +63,7 @@ const WaitlistFormModal: React.FC<WaitlistFormModalProps> = ({
       <DialogTrigger asChild>
         {trigger}
       </DialogTrigger>
-      <DialogContent className="sm:max-w-[600px] bg-graviital-dark border-graviital-blue/30 text-white animate-dialog-content">
+      <DialogContent className="sm:max-w-[600px] md:max-w-[700px] bg-graviital-dark border-graviital-blue/30 text-white animate-dialog-content">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div className="hidden md:block">
             <div className="relative h-full w-full overflow-hidden rounded-l-lg">
