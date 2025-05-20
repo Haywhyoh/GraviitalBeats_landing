@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Users } from 'lucide-react';
 
@@ -12,8 +11,8 @@ const CommunitySection: React.FC = () => {
       </div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col md:flex-row gap-10 max-w-5xl mx-auto">
-          <div className="md:w-1/2">
+        <div className="flex flex-col md:flex-row justify-center align-middle gap-16 max-w-6xl mx-auto">
+          <div className="md:w-1/2 lg:mt-24">
             <div className="flex items-center gap-3 mb-4">
               <Users className="text-graviital-blue-light" />
               <span className="text-graviital-blue-light font-medium">Community</span>
@@ -51,15 +50,14 @@ const CommunitySection: React.FC = () => {
             </p>
           </div>
           
-          <div className="md:w-1/2 flex items-center justify-center">
-            <div className="w-full h-80 bg-graviital-purple/30 rounded-lg overflow-hidden flex items-center justify-center relative">
-              <div className="absolute inset-0 bg-hero-pattern opacity-30"></div>
-              <div className="z-10 grid grid-cols-2 gap-4 p-6">
-                <div className="aspect-square rounded-md bg-graviital-purple/40 animate-float" style={{ animationDelay: '0s' }}></div>
-                <div className="aspect-square rounded-md bg-graviital-blue/40 animate-float" style={{ animationDelay: '0.5s' }}></div>
-                <div className="aspect-square rounded-md bg-graviital-accent/40 animate-float" style={{ animationDelay: '1s' }}></div>
-                <div className="aspect-square rounded-md bg-graviital-purple-light/40 animate-float" style={{ animationDelay: '1.5s' }}></div>
-              </div>
+          <div className="md:w-1/2 flex items-center justify-center ">
+            <div className="w-full rounded-lg overflow-hidden shadow-lg relative">
+              <img 
+                src="/images/speaker.png" 
+                alt="GraviitalBeats Community" 
+                className="w-full h-auto "
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-graviital-dark/70 to-transparent"></div>
             </div>
           </div>
         </div>
