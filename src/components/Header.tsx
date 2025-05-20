@@ -2,8 +2,11 @@ import React from 'react';
 import Logo from './Logo';
 import Button from './Button';
 import WaitlistFormModal from './WaitlistFormModal';
+import { useIsMobile } from '../hooks/use-mobile';
 
 const Header: React.FC = () => {
+  const isMobile = useIsMobile();
+  
   return (
     <header className="fixed top-0 left-0 right-0 z-50 px-4 py-4 bg-graviital-dark/80 backdrop-blur-md">
       <div className="container mx-auto flex items-center justify-between">
@@ -15,7 +18,7 @@ const Header: React.FC = () => {
           <a href="#faq" className="text-sm text-gray-300 hover:text-white transition-colors">FAQ</a>
         </nav>
         <WaitlistFormModal
-          trigger={<Button variant="gradient">Join Waitlist</Button>}
+          trigger={<Button variant="gradient">{isMobile ? "Join" : "Join Waitlist"}</Button>}
           onSubmit={(values) => {
             console.log('Header Waitlist form submitted:', values);
             // You can add API call here to submit form data
