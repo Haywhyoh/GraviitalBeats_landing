@@ -195,6 +195,37 @@ jobs:
               echo "✅ Deployment verified. Site is responding correctly with status code 200."
             else
               echo "⚠️ Site verification failed with status code: $HTTP_STATUS"
-              echo "Please check the server logs for details."
+              echo "Checking Nginx logs for errors..."
+              
+              # Display the last 50 lines of Nginx error logs
+              echo "=== Nginx Error Logs ==="
+              sudo tail -n 50 /var/log/nginx/error.log
+              
+              # Display the last 50 lines of Nginx access logs
+              echo "=== Nginx Access Logs ==="
+              sudo tail -n 50 /var/log/nginx/access.log
+              
+              # Check Nginx configuration status
+              echo "=== Nginx Configuration Status ==="
+              sudo nginx -t
+              
+              echo "Please check the server logs above for details."
               exit 1 
-            fi 
+            fi
+      
+      - name: Check Nginx logs manually (runs only on workflow_dispatch)
+        if: github.event_name == 'workflow_dispatch'
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.SERVER_HOST }}
+          username: ${{ secrets.SERVER_USERNAME }}
+          password: ${{ secrets.SERVER_PASSWORD }}
+          script: |
+            echo "=== Nginx Error Logs ==="
+            sudo tail -n 100 /var/log/nginx/error.log
+            
+            echo "=== Nginx Access Logs ==="
+            sudo tail -n 100 /var/log/nginx/access.log
+            
+            echo "=== Nginx Configuration Status ==="
+            sudo nginx -t 
