@@ -1,20 +1,30 @@
-
 import React from 'react';
 import Button from './Button';
 import { ArrowRight } from 'lucide-react';
+import WaitlistFormModal from './WaitlistFormModal';
 
 const HeroSection: React.FC = () => {
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16">
+      {/* Main Background Image */}
+      <div className="absolute inset-0 z-0">
+        <img 
+          src="/images/bg.jpg" 
+          alt="Background" 
+          className="h-full w-full object-cover opacity-20"
+        />
+        <div className="absolute inset-0 bg-graviital-dark/80"></div>
+      </div>
+
       {/* Background Elements */}
-      <div className="absolute inset-0 overflow-hidden">
+      {/* <div className="absolute inset-0 overflow-hidden z-1">
         <div className="absolute top-1/4 -left-28 w-80 h-80 rounded-full bg-graviital-purple opacity-20 blur-3xl animate-pulse-slow"></div>
         <div className="absolute bottom-1/4 -right-28 w-80 h-80 rounded-full bg-graviital-blue opacity-20 blur-3xl animate-pulse-slow" style={{ animationDelay: "1s" }}></div>
         <div className="absolute top-1/3 right-1/4 w-40 h-40 rounded-full bg-graviital-accent opacity-10 blur-3xl animate-pulse-slow" style={{ animationDelay: "2s" }}></div>
-      </div>
+      </div> */}
 
       <div className="container mx-auto relative z-10 px-4">
-        <div className="max-w-4xl mx-auto text-center">
+        <div className="max-w-6xl mx-auto text-center">
           <h1 className="text-4xl md:text-6xl lg:text-7xl font-extrabold mb-6 leading-tight">
             The Future of Beat Licensing
             <span className="block beat-waveform"> Starts Here</span>
@@ -25,12 +35,20 @@ const HeroSection: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button 
-              variant="gradient" 
-              className="text-lg px-8 py-4"
-            >
-              Join the Waitlist <ArrowRight size={18} />
-            </Button>
+            <WaitlistFormModal
+              trigger={
+                <Button 
+                  variant="gradient" 
+                  className="text-lg px-8 py-4"
+                >
+                  Join the Waitlist <ArrowRight size={18} />
+                </Button>
+              }
+              onSubmit={(values) => {
+                console.log('Waitlist form submitted:', values);
+                // You can add API call here to submit form data
+              }}
+            />
             <Button 
               variant="outline" 
               className="text-lg"

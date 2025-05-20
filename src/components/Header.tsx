@@ -1,7 +1,7 @@
-
 import React from 'react';
 import Logo from './Logo';
 import Button from './Button';
+import WaitlistFormModal from './WaitlistFormModal';
 
 const Header: React.FC = () => {
   return (
@@ -14,7 +14,13 @@ const Header: React.FC = () => {
           <a href="#community" className="text-sm text-gray-300 hover:text-white transition-colors">Community</a>
           <a href="#faq" className="text-sm text-gray-300 hover:text-white transition-colors">FAQ</a>
         </nav>
-        <Button variant="gradient">Join Waitlist</Button>
+        <WaitlistFormModal
+          trigger={<Button variant="gradient">Join Waitlist</Button>}
+          onSubmit={(values) => {
+            console.log('Header Waitlist form submitted:', values);
+            // You can add API call here to submit form data
+          }}
+        />
       </div>
     </header>
   );
