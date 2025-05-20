@@ -42,7 +42,7 @@ jobs:
           username: ${{ secrets.SERVER_USERNAME }}
           password: ${{ secrets.SERVER_PASSWORD }}
           source: "dist/,package.json,.env"
-          target: "/var/www/graviitalbeats.com"
+          target: "/var/www/landing.graviitalbeats.com"
           strip_components: 0
           overwrite: true
       
@@ -54,19 +54,19 @@ jobs:
           password: ${{ secrets.SERVER_PASSWORD }}
           script: |
             # Navigate to landing page directory
-            cd /var/www/graviitalbeats.com
+            cd /var/www/landing.graviitalbeats.com
             
             # Set proper permissions
-            sudo chown -R www-data:www-data /var/www/graviitalbeats.com
+            sudo chown -R www-data:www-data /var/www/landing.graviitalbeats.com
             
             # Create a deploy log
             DEPLOY_TIME=$(date '+%Y-%m-%d %H:%M:%S')
             echo "$DEPLOY_TIME - Deployed commit ${{ github.sha }}" >> deploy_history.log
             
             # Configure Nginx if not already set up (first time only)
-            if [ ! -f /etc/nginx/sites-available/graviitalbeats.com ]; then
+            if [ ! -f /etc/nginx/sites-available/landing.graviitalbeats.com ]; then
               echo "Creating Nginx configuration for graviitalbeats.com..."
-              sudo tee /etc/nginx/sites-available/graviitalbeats.com > /dev/null << EOL
+              sudo tee /etc/nginx/sites-available/landing.graviitalbeats.com > /dev/null << EOL
             # HTTP configuration - Redirects to HTTPS
             server {
                 listen 80;
@@ -83,7 +83,7 @@ jobs:
             server {
                 listen 443 ssl;
                 listen [::]:443 ssl;
-                server_name www.graviitalbeats.com;
+                server_name graviitalbeats.com www.graviitalbeats.com;
                 
                 # SSL configuration
                 ssl_certificate /etc/letsencrypt/live/graviitalbeats.com/fullchain.pem;
@@ -145,7 +145,7 @@ jobs:
               fi
               
               # Enable the site before obtaining SSL certificate
-              sudo ln -s /etc/nginx/sites-available/graviitalbeats.com /etc/nginx/sites-enabled/
+              sudo ln -s /etc/nginx/sites-available/landing.graviitalbeats.com /etc/nginx/sites-enabled/
               sudo nginx -t && sudo systemctl reload nginx
               
               # Obtain SSL certificate for both www and non-www domains
