@@ -6,6 +6,16 @@ import WaitlistFormModal from './WaitlistFormModal';
 const HeroSection: React.FC = () => {
   const [isHovered, setIsHovered] = useState(false);
 
+  const scrollToCta = () => {
+    const ctaSection = document.getElementById('cta-section');
+    if (ctaSection) {
+      ctaSection.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Fallback if ID-based approach doesn't work
+      window.location.href = '#cta-section';
+    }
+  };
+
   return (
     <section className="relative min-h-screen flex items-center pt-20 pb-16">
       {/* Main Background Image */}
@@ -94,14 +104,11 @@ const HeroSection: React.FC = () => {
                   </span>
                 </Button>
               }
-              onSubmit={(values) => {
-                console.log('Waitlist form submitted:', values);
-                // You can add API call here to submit form data
-              }}
             />
             <Button 
               variant="outline" 
               className="text-lg group hover:bg-white/5 transition-all duration-300"
+              onClick={scrollToCta}
             >
               <span className="group-hover:text-graviital-blue-light transition-colors">Learn More</span>
             </Button>

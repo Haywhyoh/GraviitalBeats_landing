@@ -15,7 +15,7 @@ const Header: React.FC = () => {
           <a href="#features" className="text-sm text-gray-300 hover:text-white transition-colors">Features</a>
           <a href="#how-it-works" className="text-sm text-gray-300 hover:text-white transition-colors">How it Works</a>
           <a href="#community" className="text-sm text-gray-300 hover:text-white transition-colors">Community</a>
-          <a href="#faq" className="text-sm text-gray-300 hover:text-white transition-colors">FAQ</a>
+          <a href="#cta-section" className="text-sm text-gray-300 hover:text-white transition-colors">FAQ</a>
         </nav>
         <WaitlistFormModal
           trigger={<Button variant="gradient">{isMobile ? "Join" : "Join Waitlist"}</Button>}

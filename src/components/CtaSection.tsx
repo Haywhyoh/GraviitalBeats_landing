@@ -41,6 +41,7 @@ const CtaSection: React.FC = () => {
 
   return (
     <section 
+      id="cta-section"
       className="py-20 bg-gradient-to-b from-graviital-dark to-graviital-purple/30 relative"
       onMouseEnter={() => setSectionHovered(true)}
       onMouseLeave={() => setSectionHovered(false)}
