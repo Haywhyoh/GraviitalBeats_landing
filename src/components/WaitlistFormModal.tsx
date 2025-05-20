@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowRight } from 'lucide-react';
+import { submitToWaitlist } from '@/api/waitlist';
+import { useToast } from '@/hooks/use-toast';
 
 import {
   Dialog,
@@ -21,16 +23,21 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
+  FormDescription,
 } from '@/components/ui/form';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
+import { Checkbox } from '@/components/ui/checkbox';
 
 // Define form validation schema
 const formSchema = z.object({
   firstName: z.string().min(2, { message: 'First name must be at least 2 characters' }),
   lastName: z.string().min(2, { message: 'Last name must be at least 2 characters' }),
   email: z.string().email({ message: 'Please enter a valid email address' }),
+  agreedToTerms: z.boolean().refine((value) => value === true, {
+    message: 'You must agree to the terms and conditions',
+  }),
 });
 
 type FormValues = z.infer<typeof formSchema>;
@@ -42,24 +49,62 @@ interface WaitlistFormModalProps {
 
 const WaitlistFormModal: React.FC<WaitlistFormModalProps> = ({ 
   trigger, 
-  onSubmit = (values) => console.log('Form submitted:', values),
+  onSubmit,
 }) => {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [dialogOpen, setDialogOpen] = useState(false);
+  const { toast } = useToast();
+  
   const form = useForm<FormValues>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       firstName: '',
       lastName: '',
       email: '',
+      agreedToTerms: false,
     },
   });
 
-  const handleSubmit = (values: FormValues) => {
-    onSubmit(values);
-    form.reset();
+  const handleSubmit = async (values: FormValues) => {
+    setIsSubmitting(true);
+    
+    try {
+      // The form validation ensures all fields are filled and valid
+      await submitToWaitlist({
+        firstName: values.firstName,
+        lastName: values.lastName,
+        email: values.email,
+        agreedToTerms: values.agreedToTerms
+      });
+      
+      // Call the custom onSubmit handler if provided
+      if (onSubmit) {
+        onSubmit(values);
+      }
+      
+      form.reset();
+      setDialogOpen(false);
+      
+      toast({
+        title: "Success!",
+        description: "You've been added to our waitlist. We'll be in touch soon!",
+        variant: "default",
+      });
+    } catch (error) {
+      const errorMessage = error instanceof Error ? error.message : 'Something went wrong. Please try again.';
+      
+      toast({
+        title: "Submission Failed",
+        description: errorMessage,
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
-    <Dialog>
+    <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
       <DialogTrigger asChild>
         {trigger}
       </DialogTrigger>
@@ -145,11 +190,34 @@ const WaitlistFormModal: React.FC<WaitlistFormModalProps> = ({
                   )}
                 />
 
+                <FormField
+                  control={form.control}
+                  name="agreedToTerms"
+                  render={({ field }) => (
+                    <FormItem className="flex flex-row items-start space-x-3 space-y-0 rounded-md animate-fade-in-up" style={{ animationDelay: "0.65s" }}>
+                      <FormControl>
+                        <Checkbox
+                          checked={field.value}
+                          onCheckedChange={field.onChange}
+                          className="border-white/30 data-[state=checked]:bg-graviital-blue data-[state=checked]:border-graviital-blue"
+                        />
+                      </FormControl>
+                      <div className="space-y-1 leading-none">
+                        <FormLabel className="text-sm text-gray-200">
+                          I agree to the <a href="/terms" className="text-graviital-blue hover:text-graviital-purple underline" target="_blank">terms and conditions</a>
+                        </FormLabel>
+                        <FormMessage />
+                      </div>
+                    </FormItem>
+                  )}
+                />
+
                 <div className="pt-2 flex justify-end space-x-2 animate-fade-in-up" style={{ animationDelay: "0.7s" }}>
                   <DialogClose asChild>
                     <Button 
                       variant="outline" 
                       className="text-white border-white/20 hover:bg-white/5 transition-all duration-300"
+                      type="button"
                     >
                       Cancel
                     </Button>
@@ -157,9 +225,10 @@ const WaitlistFormModal: React.FC<WaitlistFormModalProps> = ({
                   <Button 
                     type="submit" 
                     className="bg-gradient-to-r from-graviital-purple to-graviital-blue text-white hover:shadow-glow hover:scale-105 transition-all duration-300 group"
+                    disabled={isSubmitting}
                   >
-                    Join Now 
-                    <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />
+                    {isSubmitting ? 'Submitting...' : 'Join Now'} 
+                    {!isSubmitting && <ArrowRight size={16} className="ml-2 group-hover:translate-x-1 transition-transform duration-300" />}
                   </Button>
                 </div>
               </form>

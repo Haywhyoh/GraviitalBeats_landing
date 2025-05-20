@@ -19,10 +19,6 @@ const Header: React.FC = () => {
         </nav>
         <WaitlistFormModal
           trigger={<Button variant="gradient">{isMobile ? "Join" : "Join Waitlist"}</Button>}
-          onSubmit={(values) => {
-            console.log('Header Waitlist form submitted:', values);
-            // You can add API call here to submit form data
-          }}
         />
       </div>
     </header>
