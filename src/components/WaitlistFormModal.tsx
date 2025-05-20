@@ -68,7 +68,7 @@ const WaitlistFormModal: React.FC<WaitlistFormModalProps> = ({
           <div className="hidden md:block">
             <div className="relative h-full w-full overflow-hidden rounded-l-lg">
               <img 
-                src="/images/bg.jpg" 
+                src="/images/register_img.png" 
                 alt="GraviitalBeats" 
                 className="object-cover h-full w-full"
               />

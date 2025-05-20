@@ -15,7 +15,7 @@ const HowItWorksSection: React.FC = () => {
           </p>
         </div>
         
-        <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
+        <div className="grid md:grid-cols-3 gap-10 max-w-6xl mx-auto">
           <div className="flex flex-col items-center text-center">
             <div className="w-16 h-16 rounded-full bg-graviital-blue/20 flex items-center justify-center mb-6">
               <Music className="text-graviital-blue-light" />

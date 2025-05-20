@@ -9,7 +9,7 @@ const ProblemSolutionSection: React.FC = () => {
       <div className="absolute inset-0 bg-hero-pattern opacity-30"></div>
       
       <div className="container mx-auto px-4 relative z-10">
-        <div className="max-w-3xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <h2 className="text-3xl md:text-4xl font-bold mb-6 text-center">
             Tired of Outdated Platforms &amp; Low Royalties?
           </h2>
