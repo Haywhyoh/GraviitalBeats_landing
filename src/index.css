@@ -61,6 +61,37 @@
   }
 }
 
+/* Custom Scrollbar Styles */
+html, body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+/* Webkit Browsers (Chrome, Safari, etc) */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(23, 15, 41, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(147, 51, 234, 0.6);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(167, 71, 254, 0.8);
+}
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(147, 51, 234, 0.6) rgba(23, 15, 41, 0.5);
+}
+
 .beat-waveform {
   background: linear-gradient(90deg, #72EFDD, #4361EE, #9B5DE5);
   background-size: 200% 100%;

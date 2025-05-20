@@ -10,7 +10,7 @@ import { Check } from 'lucide-react';
 
 const Index = () => {
   return (
-    <div className="min-h-screen bg-graviital-dark text-white relative">
+    <div className="min-h-screen bg-graviital-dark text-white relative overflow-hidden">
       {/* Main Background Image */}
       <div className="fixed inset-0 z-0 pointer-events-none">
         <img 
@@ -22,7 +22,7 @@ const Index = () => {
       </div>
       
       {/* Content */}
-      <div className="relative z-10">
+      <div className="relative z-10 overflow-hidden">
         <Header />
         <HeroSection />
         <ProblemSolutionSection />
