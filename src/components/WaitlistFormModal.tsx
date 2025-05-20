@@ -5,6 +5,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { ArrowRight } from 'lucide-react';
 import { submitToWaitlist } from '@/api/waitlist';
 import { useToast } from '@/hooks/use-toast';
+import { Link } from 'react-router-dom';
 
 import {
   Dialog,
@@ -204,7 +205,7 @@ const WaitlistFormModal: React.FC<WaitlistFormModalProps> = ({
                       </FormControl>
                       <div className="space-y-1 leading-none">
                         <FormLabel className="text-sm text-gray-200">
-                          I agree to the <a href="/terms" className="text-graviital-blue hover:text-graviital-purple underline" target="_blank">terms and conditions</a>
+                          I agree to the <Link to="/terms" className="text-graviital-blue hover:text-graviital-purple underline" target="_blank">terms and conditions</Link>
                         </FormLabel>
                         <FormMessage />
                       </div>
