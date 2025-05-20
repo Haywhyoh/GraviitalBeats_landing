@@ -84,7 +84,7 @@ const WaitlistFormModal: React.FC<WaitlistFormModalProps> = ({
             <DialogHeader className="mb-4">
               <DialogTitle className="text-2xl font-bold text-white">Join the Waitlist</DialogTitle>
               <DialogDescription className="text-gray-300">
-                Get early access and exclusive founder perks
+                Get early access, exclusive perks, and experience fiat & crypto payment options
               </DialogDescription>
             </DialogHeader>
 

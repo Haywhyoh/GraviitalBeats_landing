@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './Button';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, CreditCard, Bitcoin } from 'lucide-react';
 import WaitlistFormModal from './WaitlistFormModal';
 
 const HeroSection: React.FC = () => {
@@ -30,9 +30,23 @@ const HeroSection: React.FC = () => {
             <span className="block beat-waveform"> Starts Here</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-2xl mx-auto">
-            Unlock a new era of sound. GraviitalBeats connects elite producers with artists, creators, and brands — making it seamless to buy, sell, and license digital beats.
+          <p className="text-lg md:text-xl text-gray-300 mb-6 max-w-3xl mx-auto">
+           GraviitalBeats connects elite producers with artists, creators, and brands — making it seamless to buy, sell, and license digital beats.
           </p>
+          
+          <div className="flex items-center justify-center gap-6 mb-10">
+            <div className="flex items-center gap-2">
+              <CreditCard className="text-graviital-blue-light h-5 w-5" />
+              <span className="text-gray-200">Fiat Payments</span>
+            </div>
+            <span className="text-gray-500">|</span>
+            <div className="flex items-center gap-2">
+              <Bitcoin className="text-graviital-purple-light h-5 w-5" />
+              <span className="text-gray-200">Crypto Accepted</span>
+            </div>
+          </div>
+          
+          
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <WaitlistFormModal

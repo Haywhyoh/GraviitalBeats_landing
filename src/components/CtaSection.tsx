@@ -1,6 +1,6 @@
 import React from 'react';
 import Button from './Button';
-import { ArrowRight, Check } from 'lucide-react';
+import { ArrowRight, Check, CreditCard, Bitcoin } from 'lucide-react';
 import WaitlistFormModal from './WaitlistFormModal';
 
 const CtaSection: React.FC = () => {
@@ -19,8 +19,29 @@ const CtaSection: React.FC = () => {
       <div className="container mx-auto px-4 relative z-10">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Early Access = Early Advantage
+            Unlock Financial Freedom in Music
           </h2>
+          
+          <p className="text-lg text-gray-300 mb-6">
+            <span className="text-white font-semibold">GraviitalBeats revolutionizes payments</span> in the beat licensing industry with flexible options for every creator.
+          </p>
+
+          <div className="flex flex-col md:flex-row items-center justify-center gap-6 mb-10">
+            <div className="flex items-center gap-3 bg-graviital-dark/70 px-5 py-3 rounded-lg border border-graviital-blue/20">
+              <CreditCard className="text-graviital-blue-light h-5 w-5" />
+              <div className="text-left">
+                <h3 className="font-medium">Fiat Payments</h3>
+                <p className="text-sm text-gray-400">Secure credit card transactions</p>
+              </div>
+            </div>
+            <div className="flex items-center gap-3 bg-graviital-dark/70 px-5 py-3 rounded-lg border border-graviital-purple/20">
+              <Bitcoin className="text-graviital-purple-light h-5 w-5" />
+              <div className="text-left">
+                <h3 className="font-medium">Crypto Support</h3>
+                <p className="text-sm text-gray-400">Borderless, low-fee payments</p>
+              </div>
+            </div>
+          </div>
           
           <p className="text-lg text-gray-300 mb-10">
             Join the GraviitalBeats waitlist today and:
@@ -51,6 +72,15 @@ const CtaSection: React.FC = () => {
                   <Check size={12} className="text-graviital-blue-light" />
                 </div>
                 <span>Lock in <strong>founding perks</strong> and platform credits</span>
+              </div>
+            </div>
+
+            <div className="gradient-border">
+              <div className="bg-graviital-dark px-6 py-4 rounded-md flex items-center gap-3">
+                <div className="w-5 h-5 rounded-full bg-graviital-purple/20 flex items-center justify-center shrink-0">
+                  <Check size={12} className="text-graviital-purple-light" />
+                </div>
+                <span>Experience <strong>both fiat and crypto payments</strong> for maximum financial flexibility</span>
               </div>
             </div>
           </div>
