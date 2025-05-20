@@ -59,7 +59,7 @@ const HeroSection: React.FC = () => {
             <span className="block beat-waveform"> Starts Here</span>
           </h1>
           
-          <p className="text-lg md:text-xl text-gray-300 mb-6 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "0.5s" }}>
+          <p className="text-sm md:text-xl text-gray-300 mb-6 max-w-3xl mx-auto animate-fade-in" style={{ animationDelay: "0.5s" }}>
            GraviitalBeats connects elite producers with artists, creators, and brands — making it seamless to buy, sell, and license digital beats.
           </p>
           
