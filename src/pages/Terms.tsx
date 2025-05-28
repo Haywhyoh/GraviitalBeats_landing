@@ -39,7 +39,7 @@ const Terms: React.FC = () => {
             
             <h2 className="text-2xl font-semibold mt-8 mb-4">2. Waitlist Registration</h2>
             <p>
-              By joining our waitlist, you provide consent for GraviitalBeats to collect and store your contact information including but not limited to your name and email address. We will use this information to:
+              By joining our waitlist, you provide consent for GraviitalBeats to collect and store your personal data including but not limited to your name and email address. We will use this information to:
             </p>
             <ul className="list-disc pl-5 mb-4">
               <li>Notify you about the launch of our services</li>
