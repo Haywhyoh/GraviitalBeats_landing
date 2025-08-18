@@ -1,13 +1,14 @@
 
 import React from 'react';
 import Logo from './Logo';
+import FooterLogo from './FooterLogo';
 
 const Footer: React.FC = () => {
   return (
-    <footer className="py-12 bg-graviital-dark border-t border-white/10">
+    <footer className=" bg-graviital-dark border-t border-white/10">
       <div className="container mx-auto px-4">
         <div className="flex flex-col md:flex-row justify-between items-center mb-10">
-          <Logo />
+          <FooterLogo />
           
           <div className="mt-6 md:mt-0">
             <nav className="flex flex-wrap gap-6 justify-center">
